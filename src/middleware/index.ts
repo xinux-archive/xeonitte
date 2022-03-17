@@ -1,2 +1,2 @@
-export * from './isGroup.ts';
-export * from './isReply.ts';
+export * from "./isGroup.ts";
+export * from "./isReply.ts";

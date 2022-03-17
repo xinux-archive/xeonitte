@@ -6,10 +6,10 @@
 
 <p align="center"><a href="https://t.me/s/xinuxuz" target="_blank">Xinux O'zbekiston</a> jamiyati uchun Telegram bot.</p>
 
-**Ushbu bot [grammY](https://github.com/grammyjs/grammY) kutubxonasi
-bilan qurilgan hisoblanib, unda [Deno.land](https://deno.land/) dasturi ushbu
-botni o'qish va ishga tushurish uchun qo'llaniladi. Bot modulyar sxemada
-qurilgan hisoblanib, unga yangi plagin va modullar qo'shish hech qanday muammo
+**Ushbu bot [grammY](https://github.com/grammyjs/grammY) kutubxonasi bilan
+qurilgan hisoblanib, unda [Deno.land](https://deno.land/) dasturi ushbu botni
+o'qish va ishga tushurish uchun qo'llaniladi. Bot modulyar sxemada qurilgan
+hisoblanib, unga yangi plagin va modullar qo'shish hech qanday muammo
 tug'dirmaydi va bu botning ishlash tezligi va sifatiga mutlaqo ta'sir
 qilmaydi.**
 
@@ -28,9 +28,8 @@ Ushbu bot kontributorlarga rahmatlar bo'lsinki bor va shu odamlar:
   _(Rivojlantiruvchi)_ - Botni rivojlantirib borish va undagi yangi
   qulayliklarni yaralishiga sababchi bo'lgan inson. Ikkinchi darajali yaratuvchi
   hisoblanadi.
-- [SaDi](https://github.com/sad1go0)
-  _(Rivojlantiruvchi)_ - Botni Node.js texnologiyasidan Deno.land'ga o'girishga
-  yordam bergan dasturchi hisoblanadi.
+- [SaDi](https://github.com/sad1go0) _(Rivojlantiruvchi)_ - Botni Node.js
+  texnologiyasidan Deno.land'ga o'girishga yordam bergan dasturchi hisoblanadi.
 
 > Kontributlardan biriga aylanish uchun o'z hissangizni qo'shing!
 
