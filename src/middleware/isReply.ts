@@ -1,4 +1,4 @@
-import { Context, NextFunction } from "../core/deps.ts";
+import { Context, NextFunction } from "../packages/grammy.ts";
 import { notFoundReply } from "../utils/texts.ts";
 
 const isReply = async (ctx: Context, next: NextFunction) => {

@@ -1,4 +1,4 @@
-import { Context, NextFunction } from "../core/deps.ts";
+import { Context, NextFunction } from "../packages/grammy.ts";
 import { bot } from "../core/bot.ts";
 
 bot.on("message", async (ctx: Context, next: NextFunction) => {

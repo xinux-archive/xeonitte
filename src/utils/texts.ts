@@ -1,4 +1,4 @@
-import { Context } from "../core/deps.ts";
+import { Context } from "../packages/grammy.ts";
 
 export const startText: string =
   `<b>Assalomu alaykum, hurmatli administrator!</b> \n` +
@@ -96,3 +96,5 @@ export const sourceText: string =
   `Ushbu havola orqali mening kodlarimni topishingiz mumkin:`;
 
 export const notFoundReply = `Reply bilan ko'rsating!`;
+
+export const isGroupText = `Bu komanda faqat guruh uchun`;

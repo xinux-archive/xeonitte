@@ -1,4 +1,4 @@
-import { InlineKeyboard } from "../core/deps.ts";
+import { InlineKeyboard } from "../packages/grammy.ts";
 
 export const startButton = new InlineKeyboard().url(
   "Guruhimiz",

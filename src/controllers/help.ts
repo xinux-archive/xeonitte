@@ -1,4 +1,4 @@
-import { Context } from "../core/deps.ts";
+import { Context } from "../packages/grammy.ts";
 import { helpText } from "../utils/texts.ts";
 import { helpButton } from "../utils/keyboards.ts";
 import "https://deno.land/x/dotenv/load.ts";

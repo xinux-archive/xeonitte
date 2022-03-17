@@ -1,5 +1,5 @@
 import { bot } from "../core/bot.ts";
 import { doc } from "../controllers/index.ts";
-import { isReply } from "../middleware/isReply.ts";
+import { isGroup, isReply } from "../middleware/index.ts";
 
-bot.command("doc", isReply, doc);
+bot.command("doc", isGroup, isReply, doc);

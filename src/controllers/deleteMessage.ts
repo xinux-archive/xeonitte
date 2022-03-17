@@ -1,4 +1,4 @@
-import { Context, NextFunction } from "../core/deps.ts";
+import { Context, NextFunction } from "../packages/grammy.ts";
 
 const deleteMessage = async (ctx: Context, next: NextFunction) => {
   await ctx.deleteMessage();

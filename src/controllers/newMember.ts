@@ -1,4 +1,4 @@
-import { Context } from "../core/deps.ts";
+import { Context } from "../packages/grammy.ts";
 import { rulesText } from "../utils/texts.ts";
 import { rulesButton } from "../utils/keyboards.ts";
 
