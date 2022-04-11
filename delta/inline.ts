@@ -28,7 +28,7 @@ composer.inlineQuery(/(.*)/ig, async (ctx: Context) => {
     }
 
     return await ctx.answerInlineQuery(
-      request.slice(0, 49).map((item, index) => ({
+      request.slice(0, 49).map((item) => ({
         type: "article",
         id: crypto.randomUUID(),
         title: item.name,

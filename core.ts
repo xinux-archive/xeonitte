@@ -1,4 +1,4 @@
-import { blue, Bot, Context, serve, webhookCallback } from "./deps.ts";
+import { blue, Bot, serve, webhookCallback } from "./deps.ts";
 import "./utils/config.ts";
 import env from "./utils/config.ts";
 import delta from "./delta/mod.ts";
