@@ -1,4 +1,4 @@
-import {blue, Bot, Context, serve, webhookCallback} from "./deps.ts";
+import { blue, Bot, Context, serve, webhookCallback } from "./deps.ts";
 import "./utils/config.ts";
 import env from "./utils/config.ts";
 import delta from "./delta/mod.ts";
@@ -7,13 +7,13 @@ export const bot = new Bot(env["TOKEN"] || "");
 export const handle = webhookCallback(bot, "std/http");
 
 const initializer = async () => {
-  bot.on('message:text', async (ctx: Context) => {
+  bot.on("message:text", async (ctx: Context) => {
     if (ctx?.message?.from?.username) {
       if (ctx?.message?.from?.username === "Channel_Bot") {
         await ctx.deleteMessage();
       }
     }
-  })
+  });
   await console.log(blue("[INFO]"), `bot is starting on ${env["HOST"]}`);
   await delta(bot);
   await bot.catch((error) => {
