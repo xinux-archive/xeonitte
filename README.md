@@ -1,6 +1,6 @@
 <p align="center"><a href="https://t.me/xeonittebot" target="_blank"><img height="300" width="300" src="./assets/logo.jpg"/></a></p>
 
-<h2 align="center">Xeonitte (TS for Prod | JS for Test)</h2>
+<h2 align="center">Xeonitte (Deno)</h2>
 
 <p align="center"><a href="https://t.me/xeonittebot"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=heroku&message=deployed&logoColor=eceff4&logo=github&colorA=000000&colorB=ffffff"/></a></p>
 

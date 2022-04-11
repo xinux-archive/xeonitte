@@ -1,8 +1,8 @@
 start:
-	deno run --allow-all src/index.ts
+	deno run --allow-all mod.ts
 
 dev:
-	deno run --watch --allow-all src/index.ts
+	deno run --watch --allow-all mod.ts
 
 fmt:
 	deno fmt
