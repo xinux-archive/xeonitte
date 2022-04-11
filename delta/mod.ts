@@ -16,6 +16,6 @@ export default async (bot: Bot) => {
     .use(which)
     .use(about)
     .use(rules)
-    .use(channel)
-    .use(trigger);
+    .use(trigger)
+    .use(channel);
 };
