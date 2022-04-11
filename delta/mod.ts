@@ -5,6 +5,7 @@ import which from "./which.ts";
 import { Bot } from "../deps.ts";
 import about from "./about.ts";
 import rules from "./rules.ts";
+import channel from "./channel.ts";
 
 export default async (bot: Bot) => {
   await bot
@@ -13,5 +14,6 @@ export default async (bot: Bot) => {
     .use(inline)
     .use(which)
     .use(about)
-    .use(rules);
+    .use(rules)
+    .use(channel);
 };
