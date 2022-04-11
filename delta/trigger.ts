@@ -21,6 +21,9 @@ composer.command("off", isReply, async (ctx: Context): Promise<void> => {
         `\n` +
         `\n` +
         `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`,
+      {
+        parse_mode: "HTML",
+      },
     );
   }
 });
@@ -41,6 +44,9 @@ composer.command("doc", isReply, async (ctx: Context): Promise<void> => {
         `bo'lgan ekan. Aytishlariga qaraganda, undan deyarli hamma savollarga ` +
         `javob olsa bo'larkanda. Yanachi, unga avtorlar shunchalik ko'p vaqt ajratishar ` +
         `ekanu, lekin uni sanoqligina odam o'qisharkan. Attang...</i>`,
+      {
+        parse_mode: "HTML",
+      },
     );
   }
 });
