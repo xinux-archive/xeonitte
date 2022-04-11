@@ -1,5 +1,6 @@
-import { Composer, Context } from "../deps.ts";
+import {Composer, Context, InlineKeyboard} from "../deps.ts";
 import isReply from "../hooks/isReply.ts";
+import Inline from "./inline.ts";
 
 const composer = new Composer();
 
@@ -24,6 +25,7 @@ composer.command("off", isReply, async (ctx: Context): Promise<void> => {
         `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`,
       {
         parse_mode: "HTML",
+        reply_markup: new InlineKeyboard().url(`Offtop Chat`, `https://t.me/xinuxuz_offtopic`)
       },
     );
   }
