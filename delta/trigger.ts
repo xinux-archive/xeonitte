@@ -1,6 +1,5 @@
-import {Composer, Context, InlineKeyboard} from "../deps.ts";
+import { Composer, Context, InlineKeyboard } from "../deps.ts";
 import isReply from "../hooks/isReply.ts";
-import Inline from "./inline.ts";
 
 const composer = new Composer();
 
@@ -10,7 +9,10 @@ composer.command("off", isReply, async (ctx: Context): Promise<void> => {
       parse_mode: "HTML",
     });
   } else {
-    await ctx.api.deleteMessage(ctx.message!.chat!.id, ctx.message!.reply_to_message!.message_id)
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.reply_to_message!.message_id,
+    );
     await ctx.reply(
       `<b>Hurmatli <a href="tg://user?id=${ctx?.message?.reply_to_message
         ?.from?.id}">${ctx?.message?.reply_to_message?.from
@@ -25,7 +27,10 @@ composer.command("off", isReply, async (ctx: Context): Promise<void> => {
         `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`,
       {
         parse_mode: "HTML",
-        reply_markup: new InlineKeyboard().url(`Offtop Chat`, `https://t.me/xinuxuz_offtopic`)
+        reply_markup: new InlineKeyboard().url(
+          `Offtop Chat`,
+          `https://t.me/xinuxuz_offtopic`,
+        ),
       },
     );
   }
