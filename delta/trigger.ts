@@ -12,6 +12,7 @@ composer.command("off", isReply, async (ctx: Context): Promise<void> => {
     await ctx.api.deleteMessage(
       ctx.message!.chat!.id,
       ctx.message!.reply_to_message!.message_id,
+      ctx.message!.message_id,
     );
     await ctx.reply(
       `<b>Hurmatli <a href="tg://user?id=${ctx?.message?.reply_to_message
