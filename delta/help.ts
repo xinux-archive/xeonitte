@@ -10,7 +10,7 @@ export const message = `<b>Mavjud komandalar ro'yxati:</b>` +
   `\n` +
   `/off - <code>reply qilingan odamga offtop borligi haqida eslatish</code>` +
   `\n` +
-  `/help - <code>ushbu habarni qayta ko'rsatish</code>` +
+  `/help - <code>ushbu xabarni qayta ko'rsatish</code>` +
   `\n` +
   `/about - <code>ushbu botimizning rivojlantirish qismi</code>` +
   `\n` +

@@ -5,7 +5,7 @@ const composer = new Composer();
 export const message: string =
   `<b>Assalomu alaykum, hurmatli administrator!</b> \n` +
   `\n` +
-  `Sizni ko'rib turganimdan bag'oyatda hursandman. ` +
+  `Sizni ko'rib turganimdan bag'oyatda xursandman. ` +
   `Men Xinux Jamiyati tomonidan yaratilgan bot hisoblanib, ` +
   `Xinux Jamiyati foydalanuvchilari uchun foydali resurslarni yetkazish, saqlash va ` +
   `ularni saralash uchun xizmat qilaman.`;
