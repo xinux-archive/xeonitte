@@ -47,17 +47,17 @@ composer.command("nonoff", isReply, async (ctx: Context): Promise<void> => {
     });
   } else {
     await ctx.api.deleteMessage(
-        ctx.message!.chat!.id,
-        ctx.message!.reply_to_message!.message_id,
+      ctx.message!.chat!.id,
+      ctx.message!.reply_to_message!.message_id,
     );
     await ctx.api.deleteMessage(
-        ctx.message!.chat!.id,
-        ctx.message!.message_id,
+      ctx.message!.chat!.id,
+      ctx.message!.message_id,
     );
     await ctx.reply(
-        `<b>Hurmatli <a href="tg://user?id=${ctx?.message?.reply_to_message
-            ?.from?.id}">${ctx?.message?.reply_to_message?.from
-            ?.first_name}</a>,</b>` +
+      `<b>Hurmatli <a href="tg://user?id=${ctx?.message?.reply_to_message
+        ?.from?.id}">${ctx?.message?.reply_to_message?.from
+        ?.first_name}</a>,</b>` +
         `\n` +
         `\n` +
         `Chunishim bo'yicha siz mavzuga kirib ketayabsiz. Iltimos, ` +
@@ -66,13 +66,13 @@ composer.command("nonoff", isReply, async (ctx: Context): Promise<void> => {
         `\n` +
         `\n` +
         `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`,
-        {
-          parse_mode: "HTML",
-          reply_markup: new InlineKeyboard().url(
-              `Asosiy Chat`,
-              `https://t.me/xinuxuz`,
-          ),
-        },
+      {
+        parse_mode: "HTML",
+        reply_markup: new InlineKeyboard().url(
+          `Asosiy Chat`,
+          `https://t.me/xinuxuz`,
+        ),
+      },
     );
   }
 });

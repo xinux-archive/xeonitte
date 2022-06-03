@@ -7,11 +7,13 @@ import about from "./about.ts";
 import rules from "./rules.ts";
 import channel from "./channel.ts";
 import trigger from "./trigger.ts";
+import groups from "./groups.ts";
 
 export default async (bot: Bot) => {
   await bot
     .use(start)
     .use(help)
+    .use(groups)
     .use(inline)
     .use(which)
     .use(about)
