@@ -9,7 +9,7 @@ composer.command("groups", async (ctx: Context): Promise<void> => {
 
   for (const group of groups) {
     keyboard.text(
-      `${group.name} (${group.packs.length})`,
+      `${group.name} (${group.packs})`,
       `group_1_${group.name}`,
     );
     keyboard.row();
@@ -39,7 +39,7 @@ composer.callbackQuery(
 
     for (const group of groups) {
       keyboard.text(
-        `${group.name} (${group.packs.length})`,
+        `${group.name} (${group.packs})`,
         `group_${page}_${group.name}`,
       );
       keyboard.row();
