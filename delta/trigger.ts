@@ -23,7 +23,7 @@ composer.command("off", isReply, async (ctx: Context): Promise<void> => {
         ?.first_name}</a>,</b>` +
         `\n` +
         `\n` +
-        `Chunishim bo'yicha siz mavzudan chetlayashayabsiz. Iltimos, ` +
+        `Tushunishim bo'yicha siz mavzudan chetlayashayabsiz. Iltimos, ` +
         `quyidagi tugmachani bosish orqali bizning offtop guruhga o'tib oling! ` +
         `Offtopic guruhimizda istalgan mavzuda suhbatlashish ruxsat etiladi. Boshqalarga halaqit qilmayliga 😉` +
         `\n` +
