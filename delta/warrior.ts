@@ -10,7 +10,6 @@ composer.command(
   isUwU,
   async (ctx: Context): Promise<void> => {
     const name = ctx.message!.reply_to_message!.from!.first_name;
-    const username = ctx.message!.reply_to_message!.from!.username;
 
     await ctx.replyWithPhoto(
       new InputFile({
