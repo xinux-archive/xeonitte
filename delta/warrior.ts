@@ -9,12 +9,13 @@ composer.command(
   isReply,
   isUwU,
   async (ctx: Context): Promise<void> => {
-    const warrior = ctx.message!.reply_to_message!.from!.first_name;
+    const name = ctx.message!.reply_to_message!.from!.first_name;
+    const username =  ctx.message!.reply_to_message!.from!.username;
 
     await ctx.replyWithPhoto(
-      `http://og.xinux.uz/api/warrior?full_name=${encodeURI(warrior)}`,
+      `http://og.xinux.uz/api/warrior?full_name=${encodeURI(name)}`,
       {
-        caption: `${warrior} ga Faxriy Yorlig' ob chiqilar!`,
+        caption: `@${username ? name : username} ga Faxriy Yorlig' ob chiqilar!`,
         parse_mode: "HTML",
       },
     );
