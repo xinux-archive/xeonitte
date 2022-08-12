@@ -16,4 +16,4 @@ export {
   yellow,
 } from "https://deno.land/std@0.128.0/fmt/colors.ts";
 export { config } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
-export { Groups, Search } from "https://deno.land/x/xeorarchx@v2.0.0/mod.ts";
+export { Groups, Search } from "https://deno.land/x/xeorarchx@v3.1.0/mod.ts";
