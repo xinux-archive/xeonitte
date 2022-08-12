@@ -8,6 +8,7 @@ import rules from "./rules.ts";
 import channel from "./channel.ts";
 import trigger from "./trigger.ts";
 import groups from "./groups.ts";
+import warrior from "./warrior.ts";
 
 export default async (bot: Bot) => {
   await bot
@@ -18,6 +19,7 @@ export default async (bot: Bot) => {
     .use(which)
     .use(about)
     .use(rules)
+    .use(warrior)
     .use(trigger)
     .use(channel);
 };
