@@ -15,7 +15,7 @@ composer.command(
     await ctx.replyWithPhoto(
       `http://og.xinux.uz/api/warrior?full_name=${encodeURI(name)}`,
       {
-        caption: `@${username ? name : username} ga Faxriy Yorlig' ob chiqilar!`,
+        caption: `<a href="tg://user?id=${ctx?.message?.reply_to_message?.from?.id}">${name}</a> ga Faxriy Yorlig' ob chiqilar!`,
         parse_mode: "HTML",
       },
     );

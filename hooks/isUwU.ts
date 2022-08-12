@@ -1,7 +1,8 @@
 import { Context, NextFunction } from "../deps.ts";
 
 export default async (ctx: Context, next: NextFunction) => {
-  if (ctx.message!.from!.id! !== -1001595112569) {
+  console.log(ctx.message!.reply_to_message!.from!.id)
+  if (ctx.message!.from!.id! !== 756870298) {
     return await ctx.reply(`⚠️ Bu komanda faqat Xinux Asoschisi uchun!`);
   }
   await next();
