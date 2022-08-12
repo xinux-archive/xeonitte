@@ -14,7 +14,7 @@ composer.command(
 
     await ctx.replyWithPhoto(
       new InputFile({
-        url: `http://og.xinux.uz/api/warrior?full_name=${encodeURI(name)}`,
+        url: `https://og.xinux.uz/api/warrior?full_name=${encodeURI(name)}`,
       }),
       {
         caption:
