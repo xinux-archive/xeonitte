@@ -12,4 +12,8 @@ composer.on("message:text", async (ctx: Context): Promise<void> => {
   }
 });
 
+composer.on("message:new_chat_members", (ctx: Context): void => {
+  console.log("Type:", ctx.chat!.type, " with ID of:", ctx.chat!.id);
+});
+
 export default composer;
