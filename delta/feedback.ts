@@ -1,7 +1,5 @@
 import { Composer, Context, InlineKeyboard } from "../deps.ts";
 import isPrivate from "../hooks/isPrivate.ts";
-import { bot } from "../core.ts";
-import {CTOR_KEY} from "https://deno.land/x/deno_dom@v0.1.33-alpha/src/constructor-lock.ts";
 
 const composer = new Composer();
 
@@ -33,30 +31,21 @@ export const keyboard = new InlineKeyboard().url(
   `https://t.me/xinux_feedbacks`,
 );
 
-const messageParser = new RegExp(/^\/feedback(.*)$/, "ig");
+composer.command("feedback", isPrivate, async (ctx: Context): Promise<void> => {
+  console.log("Message:", ctx.message!.text);
 
-composer.hears(
-  messageParser,
-  isPrivate,
-  async (ctx: Context): Promise<void> => {
-    const feedback = messageParser.exec(ctx.match![1]);
-
-    console.log("Message:", ctx.message!.text)
-    console.log("Parsed:", feedback)
-
-    if (feedback) {
-      await ctx.forwardMessage(-1001721970552);
-
-      await ctx.reply(thankYou(ctx), {
-        parse_mode: "HTML",
-        reply_markup: keyboard,
-      });
-    } else {
-      await ctx.reply(message, {
-        parse_mode: "HTML",
-      });
-    }
-  },
-);
+  // if (feedback) {
+  //   await ctx.forwardMessage(-1001721970552);
+  //
+  //   await ctx.reply(thankYou(ctx), {
+  //     parse_mode: "HTML",
+  //     reply_markup: keyboard,
+  //   });
+  // } else {
+  //   await ctx.reply(message, {
+  //     parse_mode: "HTML",
+  //   });
+  // }
+});
 
 export default composer;
