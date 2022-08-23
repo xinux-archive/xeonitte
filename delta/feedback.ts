@@ -34,13 +34,15 @@ export const keyboard = new InlineKeyboard().url(
 
 const channelID = -1001721970552;
 
+const messageParser = new RegExp(/^\/feedback (.*)$/, "ig");
+
 composer.hears(
-  /\/feedback(.+)/ig,
+  messageParser,
   isPrivate,
   async (ctx: Context): Promise<void> => {
-    const feedback = ctx.match![1];
+    const feedback = messageParser.exec(ctx.match![1]);
 
-    console.log(ctx.match)
+    console.log(feedback)
 
     if (feedback) {
       await ctx.forwardMessage(channelID);
