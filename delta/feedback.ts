@@ -35,12 +35,12 @@ export const keyboard = new InlineKeyboard().url(
 const channelID = -1001721970552;
 
 composer.hears(
-  /\/feedback(.*)/ig,
+  /\/feedback(.+)/ig,
   isPrivate,
   async (ctx: Context): Promise<void> => {
     const feedback = ctx.match![1];
 
-    console.log(feedback)
+    console.log(ctx.match)
 
     if (feedback) {
       await ctx.forwardMessage(channelID);
