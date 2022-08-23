@@ -32,23 +32,20 @@ export const keyboard = new InlineKeyboard().url(
 );
 
 composer.command("feedback", isPrivate, async (ctx: Context): Promise<void> => {
-  console.log("Message:", ctx.message!.text);
-
   const feedback = ctx.message!.text!.slice(9);
-  console.log(feedback)
 
-  // if (feedback) {
-  //   await ctx.forwardMessage(-1001721970552);
-  //
-  //   await ctx.reply(thankYou(ctx), {
-  //     parse_mode: "HTML",
-  //     reply_markup: keyboard,
-  //   });
-  // } else {
-  //   await ctx.reply(message, {
-  //     parse_mode: "HTML",
-  //   });
-  // }
+  if (feedback) {
+    await ctx.forwardMessage(-1001721970552);
+
+    await ctx.reply(thankYou(ctx), {
+      parse_mode: "HTML",
+      reply_markup: keyboard,
+    });
+  } else {
+    await ctx.reply(message, {
+      parse_mode: "HTML",
+    });
+  }
 });
 
 export default composer;
