@@ -34,6 +34,9 @@ export const keyboard = new InlineKeyboard().url(
 composer.command("feedback", isPrivate, async (ctx: Context): Promise<void> => {
   console.log("Message:", ctx.message!.text);
 
+  const feedback = ctx.message!.text!.slice(8);
+  console.log(feedback)
+
   // if (feedback) {
   //   await ctx.forwardMessage(-1001721970552);
   //
