@@ -18,7 +18,9 @@ export const message = `<b>Mavjud komandalar ro'yxati:</b>` +
   `\n` +
   `/which - <code>ushbu guruh va foydalanuvchi metrik ma'lumotlarini ko'rsatish</code>` +
   `\n` +
-  `/groups - <code>paketlarni to'plam bo'yicha qidirish</code>`;
+  `/groups - <code>paketlarni to'plam bo'yicha qidirish</code>` +
+  `\n` +
+  `/feedback &lt;habar&gt; - <code>paketlarni to'plam bo'yicha qidirish</code>`;
 
 export const keyboard = start.keyboard;
 
