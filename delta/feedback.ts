@@ -32,8 +32,6 @@ export const keyboard = new InlineKeyboard().url(
   `https://t.me/xinux_feedbacks`,
 );
 
-const channelID = -1001721970552;
-
 const messageParser = new RegExp(/^\/feedback (.*)$/, "ig");
 
 composer.hears(
@@ -45,7 +43,7 @@ composer.hears(
     console.log(feedback)
 
     if (feedback) {
-      await ctx.forwardMessage(channelID);
+      await ctx.forwardMessage(-1001721970552);
 
       await ctx.reply(thankYou(ctx), {
         parse_mode: "HTML",
