@@ -11,7 +11,7 @@ export const message =
   `misoldagiday o'zingizga o'zgartirib yozing jo'nating:` +
   `\n` +
   `\n` +
-  `<code>/feedback fikr</code>` +
+  `<code>/feedback &lt;habar&gt;</code>` +
   `\n` +
   `\n` +
   `<b>Misol:</b>` +
