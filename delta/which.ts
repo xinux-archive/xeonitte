@@ -13,6 +13,7 @@ composer.command("which", isGroup, async (ctx: Context): Promise<void> => {
       `<b>Ismi:</b> ${ctx!.from!.first_name} ` + `\n` +
       (ctx?.from?.username && "<b>Username:</b> @" + ctx.from.username + `\n`) +
       (ctx?.chat?.id && `<b>Chat ID:</b> <code>${ctx.chat.id}</code>` + `\n`) +
+      (ctx?.from?.id && `<b>User ID:</b> <code>${ctx.from.id}</code>` + `\n`) +    
       `<b>Status:</b> ${status}`,
     {
       parse_mode: "HTML",
