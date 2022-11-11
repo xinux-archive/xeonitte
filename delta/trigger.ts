@@ -64,24 +64,36 @@ composer.command("nonoff", isReply, async (ctx: Context): Promise<void> => {
       ctx.message!.chat!.id,
       ctx.message!.message_id,
     );
-    await ctx.reply(
+
+    const text =
       `<b>Hurmatli <a href="tg://user?id=${ctx?.message?.reply_to_message?.from?.id}">${ctx?.message?.reply_to_message?.from?.first_name}</a>,</b>` +
-        `\n` +
-        `\n` +
-        `Chunishim bo'yicha siz mavzuga kirib ketayabsiz. Iltimos, ` +
-        `quyidagi tugmachani bosish orqali bizning asosiy guruhga o'tib oling! ` +
-        `Linux haqida iloji boricha asosiy guruhimizda suhbatlashish tavsiya etiladi. Offtopchilarga halaqit qilmayliga 😉` +
-        `\n` +
-        `\n` +
-        `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`,
-      {
+      `\n` +
+      `\n` +
+      `Chunishim bo'yicha siz mavzuga kirib ketayabsiz. Iltimos, ` +
+      `quyidagi tugmachani bosish orqali bizning asosiy guruhga o'tib oling! ` +
+      `Linux haqida iloji boricha asosiy guruhimizda suhbatlashish tavsiya etiladi. Offtopchilarga halaqit qilmayliga 😉` +
+      `\n` +
+      `\n` +
+      `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`;
+
+    if (ctx.message!.is_topic_message) {
+      await ctx.reply(text, {
+        message_thread_id: ctx.message!.message_thread_id,
         parse_mode: "HTML",
         reply_markup: new InlineKeyboard().url(
           `Asosiy Chat`,
           `https://t.me/xinuxuz`,
         ),
-      },
-    );
+      });
+    } else {
+      await ctx.reply(text, {
+        parse_mode: "HTML",
+        reply_markup: new InlineKeyboard().url(
+          `Asosiy Chat`,
+          `https://t.me/xinuxuz`,
+        ),
+      });
+    }
   }
 });
 
@@ -91,18 +103,25 @@ composer.command("doc", isReply, async (ctx: Context): Promise<void> => {
       parse_mode: "HTML",
     });
   } else {
-    await ctx.reply(
+    const text =
       `<b>Demak, <a href="tg://user?id=${ctx?.message?.reply_to_message?.from?.id}">${ctx?.message?.reply_to_message?.from?.first_name}</a>,</b>` +
-        `\n` +
-        `\n` +
-        `<i>Bir bor ekan, bir yo'q ekan... Qadim o'tgan zamonlarda dokumentatsiya ` +
-        `bo'lgan ekan. Aytishlariga qaraganda, undan deyarli hamma savollarga ` +
-        `javob olsa bo'larkanda. Yanachi, unga avtorlar shunchalik ko'p vaqt ajratishar ` +
-        `ekanu, lekin uni sanoqligina odam o'qisharkan. Attang...</i>`,
-      {
+      `\n` +
+      `\n` +
+      `<i>Bir bor ekan, bir yo'q ekan... Qadim o'tgan zamonlarda dokumentatsiya ` +
+      `bo'lgan ekan. Aytishlariga qaraganda, undan deyarli hamma savollarga ` +
+      `javob olsa bo'larkanda. Yanachi, unga avtorlar shunchalik ko'p vaqt ajratishar ` +
+      `ekanu, lekin uni sanoqligina odam o'qisharkan. Attang...</i>`;
+
+    if (ctx.message!.is_topic_message) {
+      await ctx.reply(text, {
+        message_thread_id: ctx.message!.message_thread_id,
         parse_mode: "HTML",
-      },
-    );
+      });
+    } else {
+      await ctx.reply(text, {
+        parse_mode: "HTML",
+      });
+    }
   }
 });
 
