@@ -24,7 +24,7 @@ export const message = `<b>Hurmatli guruh a'zosi...</b> ` +
 
 export const keyboard = new InlineKeyboard().url(
   `Guruhga qaytish`,
-  `https://t.me/xinuxuz`,
+  `https://t.me/xinuxuz/178640`,
 );
 
 composer.command("rules", isPrivate, async (ctx: Context): Promise<void> => {
