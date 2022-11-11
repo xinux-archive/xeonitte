@@ -17,24 +17,36 @@ composer.command("off", isReply, async (ctx: Context): Promise<void> => {
       ctx.message!.chat!.id,
       ctx.message!.message_id,
     );
-    await ctx.reply(
+
+    const text =
       `<b>Hurmatli <a href="tg://user?id=${ctx?.message?.reply_to_message?.from?.id}">${ctx?.message?.reply_to_message?.from?.first_name}</a>,</b>` +
-        `\n` +
-        `\n` +
-        `Tushunishim bo'yicha siz mavzudan chetlayashayabsiz. Iltimos, ` +
-        `quyidagi tugmachani bosish orqali bizning offtop guruhga o'tib oling! ` +
-        `Offtopic guruhimizda istalgan mavzuda suhbatlashish ruxsat etiladi. Boshqalarga halaqit qilmayliga 😉` +
-        `\n` +
-        `\n` +
-        `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`,
-      {
+      `\n` +
+      `\n` +
+      `Tushunishim bo'yicha siz mavzudan chetlayashayabsiz. Iltimos, ` +
+      `quyidagi tugmachani bosish orqali bizning offtop guruhga o'tib oling! ` +
+      `Offtopic guruhimizda istalgan mavzuda suhbatlashish ruxsat etiladi. Boshqalarga halaqit qilmayliga 😉` +
+      `\n` +
+      `\n` +
+      `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`;
+
+    if (ctx.message!.is_topic_message) {
+      await ctx.reply(text, {
+        message_thread_id: ctx.message!.message_thread_id,
         parse_mode: "HTML",
         reply_markup: new InlineKeyboard().url(
           `Offtop Chat`,
-          `https://t.me/xinuxuz_offtopic`,
+          `https://t.me/xinuxuz/178666`,
         ),
-      },
-    );
+      });
+    } else {
+      await ctx.reply(text, {
+        parse_mode: "HTML",
+        reply_markup: new InlineKeyboard().url(
+          `Offtop Chat`,
+          `https://t.me/xinuxuz/178666`,
+        ),
+      });
+    }
   }
 });
 
