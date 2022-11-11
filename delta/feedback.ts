@@ -35,8 +35,6 @@ composer.command("feedback", isPrivate, async (ctx: Context): Promise<void> => {
   const feedback = ctx.message!.text!.slice(9);
 
   if (feedback) {
-    await ctx.forwardMessage(-1001721970552);
-
     await ctx.reply(thankYou(ctx), {
       parse_mode: "HTML",
       reply_markup: keyboard,
