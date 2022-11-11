@@ -18,9 +18,9 @@ export const keyboard = new InlineKeyboard().url(
 composer.command("about", isPrivate, async (ctx: Context): Promise<void> => {
   if (ctx.message!.is_topic_message) {
     await ctx.reply(message, {
+      message_thread_id: ctx.message!.message_thread_id,
       parse_mode: "HTML",
       reply_markup: keyboard,
-      message_thread_id: ctx.message!.message_thread_id,
     });
   } else {
     await ctx.reply(message, {
