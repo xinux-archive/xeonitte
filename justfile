@@ -1,3 +1,5 @@
+#!/usr/bin/env just --justfile
+
 start:
 	deno run --allow-all mod.ts
 
