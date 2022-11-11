@@ -20,7 +20,7 @@ composer.command("about", isPrivate, async (ctx: Context): Promise<void> => {
     await ctx.reply(message, {
       parse_mode: "HTML",
       reply_markup: keyboard,
-      message_thread_id: ctx.message.message_thread_id,
+      message_thread_id: ctx.message!.message_thread_id,
     });
   } else {
     await ctx.reply(message, {
