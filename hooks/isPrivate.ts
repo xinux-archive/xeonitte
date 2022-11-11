@@ -22,6 +22,5 @@ export default async (ctx: Context, next: NextFunction) => {
     }
   }
 
-
   await next();
 };

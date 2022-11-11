@@ -19,10 +19,18 @@ composer.command("groups", async (ctx: Context): Promise<void> => {
     keyboard.text(`Keyingi ➡️`, `groups_2`);
   }
 
-  await ctx.reply(`Ushbu ro'yxatdan kerakli guruhni tanlab oling`, {
-    parse_mode: "HTML",
-    reply_markup: keyboard,
-  });
+  if (ctx.message!.is_topic_message) {
+    await ctx.reply(`Ushbu ro'yxatdan kerakli guruhni tanlab oling`, {
+      message_thread_id: ctx.message!.message_thread_id,
+      parse_mode: "HTML",
+      reply_markup: keyboard,
+    });
+  } else {
+    await ctx.reply(`Ushbu ro'yxatdan kerakli guruhni tanlab oling`, {
+      parse_mode: "HTML",
+      reply_markup: keyboard,
+    });
+  }
 });
 
 composer.callbackQuery(
