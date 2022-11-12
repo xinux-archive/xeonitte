@@ -97,6 +97,190 @@ composer.command("nonoff", isReply, async (ctx: Context): Promise<void> => {
   }
 });
 
+
+// Usmon's awful code
+function warnText(userId, userName, topic) {
+  return `<b>Hurmatli <a href="tg://${userId}">${userName}<a/>,</b>,` +
+  `\n` + `\n` +
+  `Tushunishim bo’yicha siz ${topic}ga aloqador xabar yozgansiz.` +
+  `Iltimos, xabaringizni ${topic} uchun maxsus ochilgan topicga tashlang!` +
+  `\n` + '\n' +
+  `<b>Hurmat ila, Xeonitte (Kseyonita)!<b>`
+}
+
+// Debian
+composer.command("debian", isReply, async (ctx: Context): Promise<void> => {
+  if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
+    await ctx.reply(`Ha-ha... yaxshi urinish!`, {
+      parse_mode: "HTML",
+    });
+  } else {
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.reply_to_message!.message_id,
+    );
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.message_id,
+    );
+
+    const text = warnText(
+      ctx?.message?.reply_to_message?.from?.id,
+      ctx?.message?.reply_to_message?.from?.first_name,
+      "Debian"
+    ) 
+
+    if (ctx.message!.is_topic_message) {
+      await ctx.reply(text, {
+        message_thread_id: ctx.message!.message_thread_id,
+        parse_mode: "HTML",
+        reply_markup: new InlineKeyboard().url(
+          `Debian`,
+          `https://t.me/xinuxuz/180507`,
+        ),
+      });
+    } else {
+      await ctx.reply(text, {
+        parse_mode: "HTML",
+        reply_markup: new InlineKeyboard().url(
+          `Debian`,
+          `https://t.me/xinuxuz/180507`,
+        ),
+      });
+    }
+  }
+});
+
+// Windows
+composer.command("windows", isReply, async (ctx: Context): Promise<void> => {
+  if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
+    await ctx.reply(`Ha-ha... yaxshi urinish!`, {
+      parse_mode: "HTML",
+    });
+  } else {
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.reply_to_message!.message_id,
+    );
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.message_id,
+    );
+
+    const text = warnText(
+      ctx?.message?.reply_to_message?.from?.id,
+      ctx?.message?.reply_to_message?.from?.first_name,
+      "Windows"
+    ) 
+
+    if (ctx.message!.is_topic_message) {
+      await ctx.reply(text, {
+        message_thread_id: ctx.message!.message_thread_id,
+        parse_mode: "HTML",
+        reply_markup: new InlineKeyboard().url(
+          `Windows`,
+          `https://t.me/xinuxuz/180916`,
+        ),
+      });
+    } else {
+      await ctx.reply(text, {
+        parse_mode: "HTML",
+        reply_markup: new InlineKeyboard().url(
+          `Windows`,
+          `https://t.me/xinuxuz/180916`,
+        ),
+      });
+    }
+  }
+});
+
+// Coding
+composer.command("coding", isReply, async (ctx: Context): Promise<void> => {
+  if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
+    await ctx.reply(`Ha-ha... yaxshi urinish!`, {
+      parse_mode: "HTML",
+    });
+  } else {
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.reply_to_message!.message_id,
+    );
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.message_id,
+    );
+
+    const text = warnText(
+      ctx?.message?.reply_to_message?.from?.id,
+      ctx?.message?.reply_to_message?.from?.first_name,
+      "Coding"
+    ) 
+
+    if (ctx.message!.is_topic_message) {
+      await ctx.reply(text, {
+        message_thread_id: ctx.message!.message_thread_id,
+        parse_mode: "HTML",
+        reply_markup: new InlineKeyboard().url(
+          `Coding`,
+          `https://t.me/xinuxuz/180629`,
+        ),
+      });
+    } else {
+      await ctx.reply(text, {
+        parse_mode: "HTML",
+        reply_markup: new InlineKeyboard().url(
+          `Coding`,
+          `https://t.me/xinuxuz/180629`,
+        ),
+      });
+    }
+  }
+});
+
+// Redhat
+composer.command("redhat", isReply, async (ctx: Context): Promise<void> => {
+  if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
+    await ctx.reply(`Ha-ha... yaxshi urinish!`, {
+      parse_mode: "HTML",
+    });
+  } else {
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.reply_to_message!.message_id,
+    );
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.message_id,
+    );
+
+    const text = warnText(
+      ctx?.message?.reply_to_message?.from?.id,
+      ctx?.message?.reply_to_message?.from?.first_name,
+      "Redhat"
+    ) 
+
+    if (ctx.message!.is_topic_message) {
+      await ctx.reply(text, {
+        message_thread_id: ctx.message!.message_thread_id,
+        parse_mode: "HTML",
+        reply_markup: new InlineKeyboard().url(
+          `Redhat`,
+          `https://t.me/xinuxuz/180526`,
+        ),
+      });
+    } else {
+      await ctx.reply(text, {
+        parse_mode: "HTML",
+        reply_markup: new InlineKeyboard().url(
+          `Redhat`,
+          `https://t.me/xinuxuz/180526`,
+        ),
+      });
+    }
+  }
+});
+
+
 composer.command("doc", isReply, async (ctx: Context): Promise<void> => {
   if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
     await ctx.reply(`Ha-ha... yaxshi urinish!`, {
