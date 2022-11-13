@@ -8,7 +8,7 @@ export const message = `<b>Mavjud komandalar ro'yxati:</b>` +
   `\n` +
   `/doc - <code>reply qilingan odamga dok borligi haqida eslatish</code>` +
   `\n` +
-  `/off - <code>reply qilingan odamga offtop borligi haqida eslatish</code>` +
+  `/warn &lt;topic&gt; - <code>reply qilingan odamga offtop borligi haqida eslatish</code>` +
   `\n` +
   `/help - <code>ushbu xabarni qayta ko'rsatish</code>` +
   `\n` +
