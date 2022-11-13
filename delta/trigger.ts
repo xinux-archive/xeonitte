@@ -12,9 +12,12 @@ composer.hears(
   isReply,
   async (ctx: Context): Promise<any> => {
     if (!ctx.message!.is_topic_message) {
-      return await ctx.reply(`Biz topicda emasmiz bu komandani ishlatish uchun!`, {
-        parse_mode: "HTML",
-      });
+      return await ctx.reply(
+        `Biz topicda emasmiz bu komandani ishlatish uchun!`,
+        {
+          parse_mode: "HTML",
+        },
+      );
     }
 
     if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
@@ -83,6 +86,9 @@ composer.hears(
     }
   },
 );
+
+composer.hears(/\/warn/i, async (ctx: Context) => {
+});
 
 composer.command("doc", isReply, async (ctx: Context): Promise<void> => {
   if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
