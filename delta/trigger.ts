@@ -11,6 +11,12 @@ composer.hears(
   /^\/warn (.+)$/i,
   isReply,
   async (ctx: Context): Promise<any> => {
+    if (!ctx.message!.is_topic_message) {
+      return await ctx.reply(`Biz topicda emasmiz bu komandani ishlatish uchun!`, {
+        parse_mode: "HTML",
+      });
+    }
+
     if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
       if (ctx.message) {
         return await ctx.reply(`Ha-ha... yaxshi urinish!`, {
