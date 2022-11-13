@@ -23,6 +23,9 @@ composer.hears(
     const requestedTopic: string = ctx.match![1];
     const registeredTopics: Topics = topics;
 
+    console.log("Requested Topic:", requestedTopic)
+    console.log("Does that exist:", !Object.keys(topics).includes(requestedTopic))
+
     if (!Object.keys(topics).includes(requestedTopic)) {
       return await ctx.reply(
         `<b>Bunaqangi topic bizda borga o'xshamaydiyov... Bizda faqat ushbu topiclar mavjud:</b>` +
