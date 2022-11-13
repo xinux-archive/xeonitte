@@ -1,18 +1,32 @@
-import { Composer, Context, InlineKeyboard } from "../deps.ts";
 import isReply from "../hooks/isReply.ts";
+import topics from "../topics.json" assert { type: "json" };
+import { Composer, Context, InlineKeyboard } from "../deps.ts";
 
 const composer = new Composer();
 
-composer.command("off", isReply, async (ctx: Context): Promise<void> => {
-  if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
-    await ctx.reply(`Ha-ha... yaxshi urinish!`, {
-      parse_mode: "HTML",
-    });
-  } else {
+composer.hears(
+  /^\/warn (.*)$/ig,
+  isReply,
+  async (ctx: Context): Promise<void> => {
+    if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
+      if (ctx.message)
+      return await ctx.reply(`Ha-ha... yaxshi urinish!`, {
+        parse_mode: "HTML",
+      });
+    }
+
+    const requestedTopic = ctx.match[1];
+    if (!Object.keys(topics).includes(requestedTopic)) {
+      return await ctx.reply(`Ha-ha... yaxshi urinish!`, {
+        parse_mode: "HTML",
+      });
+    }
+
     await ctx.api.deleteMessage(
       ctx.message!.chat!.id,
       ctx.message!.reply_to_message!.message_id,
     );
+
     await ctx.api.deleteMessage(
       ctx.message!.chat!.id,
       ctx.message!.message_id,
@@ -47,55 +61,8 @@ composer.command("off", isReply, async (ctx: Context): Promise<void> => {
         ),
       });
     }
-  }
-});
-
-composer.command("nonoff", isReply, async (ctx: Context): Promise<void> => {
-  if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
-    await ctx.reply(`Ha-ha... yaxshi urinish!`, {
-      parse_mode: "HTML",
-    });
-  } else {
-    await ctx.api.deleteMessage(
-      ctx.message!.chat!.id,
-      ctx.message!.reply_to_message!.message_id,
-    );
-    await ctx.api.deleteMessage(
-      ctx.message!.chat!.id,
-      ctx.message!.message_id,
-    );
-
-    const text =
-      `<b>Hurmatli <a href="tg://user?id=${ctx?.message?.reply_to_message?.from?.id}">${ctx?.message?.reply_to_message?.from?.first_name}</a>,</b>` +
-      `\n` +
-      `\n` +
-      `Chunishim bo'yicha siz mavzuga kirib ketayabsiz. Iltimos, ` +
-      `quyidagi tugmachani bosish orqali bizning asosiy guruhga o'tib oling! ` +
-      `Linux haqida iloji boricha asosiy guruhimizda suhbatlashish tavsiya etiladi. Offtopchilarga halaqit qilmayliga 😉` +
-      `\n` +
-      `\n` +
-      `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`;
-
-    if (ctx.message!.is_topic_message) {
-      await ctx.reply(text, {
-        message_thread_id: ctx.message!.message_thread_id,
-        parse_mode: "HTML",
-        reply_markup: new InlineKeyboard().url(
-          `Asosiy Chat`,
-          `https://t.me/xinuxuz`,
-        ),
-      });
-    } else {
-      await ctx.reply(text, {
-        parse_mode: "HTML",
-        reply_markup: new InlineKeyboard().url(
-          `Asosiy Chat`,
-          `https://t.me/xinuxuz`,
-        ),
-      });
-    }
-  }
-});
+  },
+);
 
 composer.command("doc", isReply, async (ctx: Context): Promise<void> => {
   if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
