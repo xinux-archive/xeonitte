@@ -14,6 +14,7 @@ composer.hears(
     if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
       if (ctx.message) {
         return await ctx.reply(`Ha-ha... yaxshi urinish!`, {
+          reply_to_message_id: ctx.message!.message_id,
           parse_mode: "HTML",
         });
       }
@@ -27,6 +28,7 @@ composer.hears(
         `<b>Bunaqangi topic bizda borga o'xshamaydiyov... Bizda faqat ushbu topiclar mavjud:</b>` +
           `\n` + `<i>${Object.keys(registeredTopics).join(" | ")}</i>`,
         {
+          reply_to_message_id: ctx.message!.message_id,
           parse_mode: "HTML",
         },
       );
