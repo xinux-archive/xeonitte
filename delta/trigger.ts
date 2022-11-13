@@ -8,7 +8,7 @@ const composer = new Composer();
 type Topics = { [key: string]: string };
 
 composer.hears(
-  /^\/warn (.*)$/ig,
+  /^\/warn (.+)$/i,
   isReply,
   async (ctx: Context): Promise<any> => {
     if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
