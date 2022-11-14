@@ -5,7 +5,7 @@ const composer = new Composer();
 composer.on("message:text", async (ctx: Context): Promise<void> => {
   if (
     ctx.chat!.id === -1001174263940 &&
-    ctx.message!.reply_to_message!.message_id === 178654
+    ctx.message!.message_thread_id === 178654
   ) {
     await ctx.deleteMessage();
   }
