@@ -10,11 +10,6 @@ export default async (ctx: Context, next: NextFunction) => {
     );
   }
 
-  console.log("Message:", ctx.message.message_id);
-  console.log("Reply:", ctx.message.reply_to_message?.message_id);
-  console.log("Contain:", !Object.values(topics).includes(ctx.message!.reply_to_message!.message_id))
-  console.log("Reply:", !ctx.message?.reply_to_message)
-
   if (!ctx.message?.reply_to_message && !Object.values(topics).includes(ctx.message!.reply_to_message!.message_id)) {
     return await reply(ctx, `↪ Reply bilan ko'rsatingchi habarni!`);
   }
