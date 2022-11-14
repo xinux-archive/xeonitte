@@ -17,22 +17,6 @@ composer.command(
       ? ctx.match
       : ctx.match!.join(" ");
 
-    console.log("Chosen topic:", requestedTopic);
-
-    await ctx.api.deleteMessage(
-      ctx.message!.chat!.id,
-      ctx.message!.reply_to_message!.message_id,
-    ).catch(() => {
-      console.warn("Oh no... I couldn't delete the message!");
-    });
-
-    await ctx.api.deleteMessage(
-      ctx.message!.chat!.id,
-      ctx.message!.message_id,
-    ).catch(() => {
-      console.warn("Oh no... I couldn't delete the message!");
-    });
-
     if (!Object.keys(topics).includes(requestedTopic)) {
       return await reply(
         ctx,
@@ -41,11 +25,25 @@ composer.command(
       );
     }
 
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.message_id,
+    ).catch(() => {
+      console.warn("Oh no... I couldn't delete the message!");
+    });
+
     if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
       if (ctx.message) {
         return await reply(ctx, `Ha-ha... yaxshi urinish!`);
       }
     }
+
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.reply_to_message!.message_id,
+    ).catch(() => {
+      console.warn("Oh no... I couldn't delete the message!");
+    });
 
     const requestedTopicURL = registeredTopics[requestedTopic];
 
@@ -60,24 +58,12 @@ composer.command(
       `\n` +
       `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`;
 
-    if (ctx.message!.is_topic_message) {
-      await ctx.reply(text, {
-        message_thread_id: ctx.message!.message_thread_id,
-        parse_mode: "HTML",
-        reply_markup: new InlineKeyboard().url(
-          `${requestedTopic} Chat`,
-          `https://t.me/xinuxuz/${requestedTopicURL}`,
-        ),
-      });
-    } else {
-      await ctx.reply(text, {
-        parse_mode: "HTML",
-        reply_markup: new InlineKeyboard().url(
-          `${requestedTopic} Chat`,
-          `https://t.me/xinuxuz/${requestedTopicURL}`,
-        ),
-      });
-    }
+    const keyboard = new InlineKeyboard().url(
+      `${requestedTopic.charAt(0).toUpperCase()}${requestedTopic.slice(1)} Chat`,
+      `https://t.me/xinuxuz/${requestedTopicURL}`,
+    );
+
+    return await reply(ctx, text, keyboard);
   },
 );
 
@@ -96,16 +82,7 @@ composer.command("doc", isReply, async (ctx: Context): Promise<void> => {
       `javob olsa bo'larkanda. Yanachi, unga avtorlar shunchalik ko'p vaqt ajratishar ` +
       `ekanu, lekin uni sanoqligina odam o'qisharkan. Attang...</i>`;
 
-    if (ctx.message!.is_topic_message) {
-      await ctx.reply(text, {
-        message_thread_id: ctx.message!.message_thread_id,
-        parse_mode: "HTML",
-      });
-    } else {
-      await ctx.reply(text, {
-        parse_mode: "HTML",
-      });
-    }
+    return await reply(ctx, text);
   }
 });
 

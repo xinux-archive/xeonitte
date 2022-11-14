@@ -6,7 +6,7 @@ export default async (ctx: Context, next: NextFunction) => {
   if (!ctx.message?.is_topic_message) {
     return await reply(
       ctx,
-      `Biz topicda emasmiz bu komandani ishlatish uchun!`,
+      `⚠️ <b>Biz topicda emasmiz bu komandani ishlatish uchun!</b>`,
     );
   }
 
