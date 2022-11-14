@@ -20,7 +20,7 @@ composer.command(
     if (!Object.keys(topics).includes(requestedTopic)) {
       return await reply(
         ctx,
-        `<b>Bunaqangi topic bizda borga o'xshamaydiyov... \n\nBizda faqat ushbu topiclar mavjud:</b>` +
+        `<b>Bunaqangi topic bizda borga o'xshamaydiyov... \n\nBizda faqat bunday topiclar mavjud:</b>` +
           `\n` + `<i>${Object.keys(registeredTopics).join(" | ")}</i>`,
       );
     }
