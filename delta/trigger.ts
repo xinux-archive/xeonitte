@@ -59,7 +59,9 @@ composer.command(
       `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`;
 
     const keyboard = new InlineKeyboard().url(
-      `${requestedTopic.charAt(0).toUpperCase()}${requestedTopic.slice(1)} Chat`,
+      `${requestedTopic.charAt(0).toUpperCase()}${
+        requestedTopic.slice(1)
+      } Chat`,
       `https://t.me/xinuxuz/${requestedTopicURL}`,
     );
 
