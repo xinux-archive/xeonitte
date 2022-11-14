@@ -19,7 +19,7 @@ composer.command(
 
     console.log("Chosen topic:", requestedTopic);
 
-    if (!ctx.message!.is_topic_message) {
+    if (!ctx.message?.is_topic_message) {
       return await ctx.reply(
         `Biz topicda emasmiz bu komandani ishlatish uchun!`,
         {
