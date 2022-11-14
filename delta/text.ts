@@ -1,11 +1,13 @@
+// deno-lint-ignore-file no-explicit-any
 import { Composer, Context } from "../deps.ts";
+import topics from "../topics.json" assert { type: "json" };
 
 const composer = new Composer();
 
 composer.on("message:text", async (ctx: Context): Promise<any> => {
   if (
     ctx.chat!.id === -1001174263940 &&
-    ctx.message!.message_thread_id === 178654
+    ctx.message!.message_thread_id === topics["neofetch"]
   ) {
     return await ctx.deleteMessage();
   }
