@@ -2,19 +2,21 @@ import { Composer, Context } from "../deps.ts";
 
 const composer = new Composer();
 
-composer.on("message:text", async (ctx: Context): Promise<void> => {
+composer.on("message:text", async (ctx: Context): Promise<any> => {
+  console.log(ctx.message);
+
   if (
     ctx.chat!.id === -1001174263940 &&
     ctx.message!.message_thread_id === 178654
   ) {
-    await ctx.deleteMessage();
+    return await ctx.deleteMessage();
   }
 
   if (ctx?.message?.from?.username) {
     if (
       ctx?.message?.from?.username === "Channel_Bot"
     ) {
-      await ctx.deleteMessage();
+      return await ctx.deleteMessage();
     }
   }
 });
