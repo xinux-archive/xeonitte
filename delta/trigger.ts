@@ -8,12 +8,16 @@ const composer = new Composer();
 
 type Topics = { [key: string]: string };
 
-composer.hears(
-  /^\/warn(.+)$/i,
+composer.command(
+  "warn",
   isReply,
   async (ctx: Context): Promise<any> => {
-    const requestedTopic: string = ctx.match![1].trim();
     const registeredTopics: Topics = topics;
+    const requestedTopic: string = typeof ctx.match === "string"
+      ? ctx.match
+      : ctx.match!.join(" ");
+
+    console.log("Chosen topic:", requestedTopic);
 
     if (!ctx.message!.is_topic_message) {
       return await ctx.reply(
@@ -23,6 +27,16 @@ composer.hears(
         },
       );
     }
+
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.reply_to_message!.message_id,
+    );
+
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.message_id,
+    );
 
     if (!Object.keys(topics).includes(requestedTopic)) {
       return await reply(
@@ -37,16 +51,6 @@ composer.hears(
         return await reply(ctx, `Ha-ha... yaxshi urinish!`);
       }
     }
-
-    await ctx.api.deleteMessage(
-      ctx.message!.chat!.id,
-      ctx.message!.reply_to_message!.message_id,
-    );
-
-    await ctx.api.deleteMessage(
-      ctx.message!.chat!.id,
-      ctx.message!.message_id,
-    );
 
     const requestedTopicURL = registeredTopics[requestedTopic];
 
