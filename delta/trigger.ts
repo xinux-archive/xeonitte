@@ -67,11 +67,9 @@ composer.command(
   },
 );
 
-composer.command("doc", isReply, async (ctx: Context): Promise<void> => {
+composer.command("doc", isReply, async (ctx: Context): Promise<any> => {
   if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
-    await ctx.reply(`Ha-ha... yaxshi urinish!`, {
-      parse_mode: "HTML",
-    });
+    return await reply(ctx, `Ha-ha... yaxshi urinish!`);
   } else {
     const text =
       `<b>Demak, <a href="tg://user?id=${ctx?.message?.reply_to_message?.from?.id}">${ctx?.message?.reply_to_message?.from?.first_name}</a>,</b>` +
