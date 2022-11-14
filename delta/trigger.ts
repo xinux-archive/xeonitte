@@ -6,7 +6,7 @@ import { Composer, Context, InlineKeyboard } from "../deps.ts";
 
 const composer = new Composer();
 
-type Topics = { [key: string]: string };
+type Topics = { [key: string]: number };
 
 composer.command(
   "warn",
@@ -18,15 +18,6 @@ composer.command(
       : ctx.match!.join(" ");
 
     console.log("Chosen topic:", requestedTopic);
-
-    if (!ctx.message?.is_topic_message) {
-      return await ctx.reply(
-        `Biz topicda emasmiz bu komandani ishlatish uchun!`,
-        {
-          parse_mode: "HTML",
-        },
-      );
-    }
 
     await ctx.api.deleteMessage(
       ctx.message!.chat!.id,
@@ -75,7 +66,7 @@ composer.command(
         parse_mode: "HTML",
         reply_markup: new InlineKeyboard().url(
           `${requestedTopic} Chat`,
-          `${requestedTopicURL}`,
+          `https://t.me/xinuxuz/${requestedTopicURL}`,
         ),
       });
     } else {
@@ -83,7 +74,7 @@ composer.command(
         parse_mode: "HTML",
         reply_markup: new InlineKeyboard().url(
           `${requestedTopic} Chat`,
-          `${requestedTopicURL}`,
+          `https://t.me/xinuxuz/${requestedTopicURL}`,
         ),
       });
     }
