@@ -3,8 +3,6 @@ import { Composer, Context } from "../deps.ts";
 const composer = new Composer();
 
 composer.on("message:text", async (ctx: Context): Promise<any> => {
-  console.log(ctx.message);
-
   if (
     ctx.chat!.id === -1001174263940 &&
     ctx.message!.message_thread_id === 178654
@@ -12,12 +10,11 @@ composer.on("message:text", async (ctx: Context): Promise<any> => {
     return await ctx.deleteMessage();
   }
 
-  if (ctx?.message?.from?.username) {
-    if (
-      ctx?.message?.from?.username === "Channel_Bot"
-    ) {
-      return await ctx.deleteMessage();
-    }
+  if (
+    ctx?.message?.from?.username &&
+    ctx?.message?.from?.username === "Channel_Bot"
+  ) {
+    return await ctx.deleteMessage();
   }
 });
 
