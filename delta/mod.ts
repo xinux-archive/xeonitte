@@ -5,7 +5,7 @@ import which from "./which.ts";
 import { Bot } from "../deps.ts";
 import about from "./about.ts";
 import rules from "./rules.ts";
-import channel from "./channel.ts";
+import text from "./text.ts";
 import groups from "./groups.ts";
 import warrior from "./warrior.ts";
 import trigger from "./trigger.ts";
@@ -23,5 +23,5 @@ export default async (bot: Bot) => {
     .use(feedback)
     .use(warrior)
     .use(trigger)
-    .use(channel);
+    .use(text);
 };
