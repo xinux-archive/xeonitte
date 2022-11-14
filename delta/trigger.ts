@@ -31,12 +31,16 @@ composer.command(
     await ctx.api.deleteMessage(
       ctx.message!.chat!.id,
       ctx.message!.reply_to_message!.message_id,
-    );
+    ).catch(() => {
+      console.warn("Oh no... I couldn't delete the message!");
+    });
 
     await ctx.api.deleteMessage(
       ctx.message!.chat!.id,
       ctx.message!.message_id,
-    );
+    ).catch(() => {
+      console.warn("Oh no... I couldn't delete the message!");
+    });
 
     if (!Object.keys(topics).includes(requestedTopic)) {
       return await reply(
