@@ -1,4 +1,5 @@
 // deno-lint-ignore-file no-explicit-any
+import { reply } from "../utils/sender.ts";
 import isReply from "../hooks/isReply.ts";
 import topics from "../topics.json" assert { type: "json" };
 import { Composer, Context, InlineKeyboard } from "../deps.ts";
@@ -8,36 +9,33 @@ const composer = new Composer();
 type Topics = { [key: string]: string };
 
 composer.hears(
-  /^\/warn (.+)$/i,
+  /^\/warn(.+)$/i,
   isReply,
   async (ctx: Context): Promise<any> => {
+    const requestedTopic: string = ctx.match![1].trim();
+    const registeredTopics: Topics = topics;
+
     if (!ctx.message!.is_topic_message) {
-      return await ctx.reply(`Biz topicda emasmiz bu komandani ishlatish uchun!`, {
-        parse_mode: "HTML",
-      });
+      return await ctx.reply(
+        `Biz topicda emasmiz bu komandani ishlatish uchun!`,
+        {
+          parse_mode: "HTML",
+        },
+      );
+    }
+
+    if (!Object.keys(topics).includes(requestedTopic)) {
+      return await reply(
+        ctx,
+        `<b>Bunaqangi topic bizda borga o'xshamaydiyov... Bizda faqat ushbu topiclar mavjud:</b>` +
+          `\n` + `<i>${Object.keys(registeredTopics).join(" | ")}</i>`,
+      );
     }
 
     if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
       if (ctx.message) {
-        return await ctx.reply(`Ha-ha... yaxshi urinish!`, {
-          reply_to_message_id: ctx.message!.message_id,
-          parse_mode: "HTML",
-        });
+        return await reply(ctx, `Ha-ha... yaxshi urinish!`);
       }
-    }
-
-    const requestedTopic: string = ctx.match![1];
-    const registeredTopics: Topics = topics;
-
-    if (!Object.keys(topics).includes(requestedTopic)) {
-      return await ctx.reply(
-        `<b>Bunaqangi topic bizda borga o'xshamaydiyov... Bizda faqat ushbu topiclar mavjud:</b>` +
-          `\n` + `<i>${Object.keys(registeredTopics).join(" | ")}</i>`,
-        {
-          reply_to_message_id: ctx.message!.message_id,
-          parse_mode: "HTML",
-        },
-      );
     }
 
     await ctx.api.deleteMessage(

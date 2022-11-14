@@ -11,3 +11,6 @@ fmt:
 
 lint:
 	deno lint
+
+cache:
+	deno cache ./deps.ts
