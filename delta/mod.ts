@@ -7,6 +7,7 @@ import about from "./about.ts";
 import rules from "./rules.ts";
 import text from "./text.ts";
 import groups from "./groups.ts";
+import honor from "./honor.ts";
 import warrior from "./warrior.ts";
 import trigger from "./trigger.ts";
 import feedback from "./feedback.ts";
@@ -14,6 +15,7 @@ import feedback from "./feedback.ts";
 export default async (bot: Bot) => {
   await bot
     .use(start)
+    .use(honor)
     .use(help)
     .use(groups)
     .use(inline)
