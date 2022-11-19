@@ -1,4 +1,4 @@
-import { Package } from "https://deno.land/x/xeorarchx@v2.0.0/search.ts";
+import { Package } from "https://deno.land/x/xeorarchx@v3.1.0/search.ts";
 
 const normalize = (pack: Package): string => {
   if (pack.type === "aur") {

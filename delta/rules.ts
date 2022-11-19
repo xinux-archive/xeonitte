@@ -24,14 +24,22 @@ export const message = `<b>Hurmatli guruh a'zosi...</b> ` +
 
 export const keyboard = new InlineKeyboard().url(
   `Guruhga qaytish`,
-  `https://t.me/xinuxuz`,
+  `https://t.me/xinuxuz/178640`,
 );
 
 composer.command("rules", isPrivate, async (ctx: Context): Promise<void> => {
-  await ctx.reply(message, {
-    parse_mode: "HTML",
-    reply_markup: keyboard,
-  });
+  if (ctx.message!.is_topic_message) {
+    await ctx.reply(message, {
+      message_thread_id: ctx.message!.message_thread_id,
+      parse_mode: "HTML",
+      reply_markup: keyboard,
+    });
+  } else {
+    await ctx.reply(message, {
+      parse_mode: "HTML",
+      reply_markup: keyboard,
+    });
+  }
 });
 
 export default composer;

@@ -15,10 +15,18 @@ export const keyboard = new InlineKeyboard()
   .url("Web Sahifa", "https://xinux.uz");
 
 composer.command("start", async (ctx: Context): Promise<void> => {
-  await ctx.reply(message, {
-    parse_mode: "HTML",
-    reply_markup: keyboard,
-  });
+  if (ctx.message!.is_topic_message) {
+    await ctx.reply(message, {
+      message_thread_id: ctx.message!.message_thread_id,
+      parse_mode: "HTML",
+      reply_markup: keyboard,
+    });
+  } else {
+    await ctx.reply(message, {
+      parse_mode: "HTML",
+      reply_markup: keyboard,
+    });
+  }
 });
 
 export default composer;

@@ -1,3 +1,5 @@
+#!/usr/bin/env just --justfile
+
 start:
 	deno run --allow-all mod.ts
 
@@ -9,3 +11,6 @@ fmt:
 
 lint:
 	deno lint
+
+cache:
+	deno cache ./deps.ts
