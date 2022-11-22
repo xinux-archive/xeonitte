@@ -53,7 +53,7 @@ composer.command(
       `\n` +
       `Tushunishim bo'yicha siz mavzudan chetlayashyabsiz. Iltimos, ` +
       `quyidagi tugmachani bosish orqali bizning <b>${requestedTopic}</b> guruhimizga o'tib oling! ` +
-      `<b></b> guruhimizda ushbu mavzuda suhbatlashish ruxsat etiladi. Boshqalarga xalaqit qilmayliga 😉` +
+      `<b>${requestedTopic}</b> guruhimizda ushbu mavzuda suhbatlashish ruxsat etiladi. Boshqalarga xalaqit qilmayliga 😉` +
       `\n` +
       `\n` +
       `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`;
