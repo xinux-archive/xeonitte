@@ -52,8 +52,8 @@ composer.command(
       `\n` +
       `\n` +
       `Tushunishim bo'yicha siz mavzudan chetlayashyabsiz. Iltimos, ` +
-      `quyidagi tugmachani bosish orqali bizning <b>${requestedTopic.charAt(0).toUpperCase}${requestedTopic.slice(1)}</b> guruhimizga o'tib oling! ` +
-      `<b>${requestedTopic.charAt(0).toUpperCase}${requestedTopic.slice(1)}</b> guruhimizda ushbu mavzuda suhbatlashish ruxsat etiladi. Boshqalarga xalaqit qilmayliga 😉` +
+      `quyidagi tugmachani bosish orqali bizning <b>${requestedTopic}</b> guruhimizga o'tib oling! ` +
+      `<b></b> guruhimizda ushbu mavzuda suhbatlashish ruxsat etiladi. Boshqalarga xalaqit qilmayliga 😉` +
       `\n` +
       `\n` +
       `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`;
