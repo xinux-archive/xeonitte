@@ -20,7 +20,7 @@ composer.command(
     if (!Object.keys(topics).includes(requestedTopic)) {
       return await reply(
         ctx,
-        `<b>Bunaqangi topic bizda borga o'xshamaydiyov... Bizda faqat ushbu topiclar mavjud:</b>` +
+        `<b>Bunaqangi topic bizda borga o'xshamaydiyov...\n\nBizda faqat quyidagi topic (mavzu)lar bor:</b>` +
           `\n` + `<i>${Object.keys(registeredTopics).join(" | ")}</i>`,
       );
     }
@@ -51,9 +51,9 @@ composer.command(
       `<b>Hurmatli <a href="tg://user?id=${ctx?.message?.reply_to_message?.from?.id}">${ctx?.message?.reply_to_message?.from?.first_name}</a>,</b>` +
       `\n` +
       `\n` +
-      `Tushunishim bo'yicha siz mavzudan chetlayashayabsiz. Iltimos, ` +
-      `quyidagi tugmachani bosish orqali bizning ${requestedTopic} guruhga o'tib oling! ` +
-      `${requestedTopic} guruhimizda ushbu mavzuda suhbatlashish ruxsat etiladi. Boshqalarga halaqit qilmayliga 😉` +
+      `Tushunishim bo'yicha siz mavzudan chetlayashyabsiz. Iltimos, ` +
+      `quyidagi tugmachani bosish orqali bizning <b>${requestedTopic.charAt(0).toUpperCase}${requestedTopic.slice(1)}</b> guruhimizga o'tib oling! ` +
+      `<b>${requestedTopic.charAt(0).toUpperCase}${requestedTopic.slice(1)}</b> guruhimizda ushbu mavzuda suhbatlashish ruxsat etiladi. Boshqalarga xalaqit qilmayliga 😉` +
       `\n` +
       `\n` +
       `<b>Hurmat ila, Xeonitte (Kseyonita)</b>`;
@@ -73,6 +73,14 @@ composer.command("doc", isReply, async (ctx: Context): Promise<any> => {
   if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
     return await reply(ctx, `Ha-ha... yaxshi urinish!`);
   } else {
+
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.message_id,
+    ).catch(() => {
+      console.warn("Oh no... I couldn't delete the message!");
+    });
+
     const text =
       `<b>Demak, <a href="tg://user?id=${ctx?.message?.reply_to_message?.from?.id}">${ctx?.message?.reply_to_message?.from?.first_name}</a>,</b>` +
       `\n` +
