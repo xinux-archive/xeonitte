@@ -38,13 +38,12 @@ const search = async (type: string, page: string): Promise<string[]> => {
   return matches;
 };
 
-
 const getPage = async (type: string, page: string): Promise<Page> => {
   const response = await fetch(`${DL_URL}/${type}/${page}.md`);
 
   const responseText = await response.text();
 
-  const lines = responseText.split('\n').map((line) => {
+  const lines = responseText.split("\n").map((line) => {
     if (line.startsWith(">")) {
       return `_${line.slice(2)}_`;
     }
@@ -53,7 +52,7 @@ const getPage = async (type: string, page: string): Promise<Page> => {
   const title = lines[0].replace(/^#\s?/, "");
 
   lines[0] = `*${title}*`;
-  const content = lines.join('\n');
+  const content = lines.join("\n");
 
   return {
     title: title,
@@ -63,14 +62,17 @@ const getPage = async (type: string, page: string): Promise<Page> => {
   };
 };
 
-
 export default async (page: string) => {
   const matches = await search("linux", page);
-  const pages = await Promise.all(matches.map(async (page) => await getPage("linux", page)));
+  const pages = await Promise.all(
+    matches.map(async (page) => await getPage("linux", page)),
+  );
 
   if (pages.length < 10) {
     const _matches = await search("common", page);
-    const _pages = await Promise.all(_matches.map(async (page) => await getPage("common", page)));
+    const _pages = await Promise.all(
+      _matches.map(async (page) => await getPage("common", page)),
+    );
     pages.push(..._pages);
   }
 

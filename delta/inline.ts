@@ -45,8 +45,8 @@ composer.inlineQuery(/^(?!\/tldr)(.*)/ig, async (ctx: Context) => {
             (item.repo ? "<b>Repozitoriya:</b> " + item.repo + `\n` : "") +
             (item.updated &&
               "<b>O'zgartirilgan:</b> " +
-              `${new Date(item.updated).toLocaleString()}` +
-              `\n`) +
+                `${new Date(item.updated).toLocaleString()}` +
+                `\n`) +
             `\n` +
             `<b>O'rnatish uchun:</b>` +
             `\n` +
