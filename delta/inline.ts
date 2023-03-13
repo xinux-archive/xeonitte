@@ -1,9 +1,10 @@
 import { Composer, Context, InlineKeyboard, Search } from "../deps.ts";
 import normalize from "../utils/normalize.ts";
+import tldr from "../utils/tldr.ts";
 
 const composer = new Composer();
 
-composer.inlineQuery(/(.*)/ig, async (ctx: Context) => {
+composer.inlineQuery(/^(?!\/tldr)(.*)/ig, async (ctx: Context) => {
   if (ctx.inlineQuery?.query) {
     const request = await Search.search(ctx.inlineQuery?.query);
 
@@ -74,6 +75,75 @@ composer.inlineQuery(/(.*)/ig, async (ctx: Context) => {
           `qidirish imkoniga ega bo'lasiz! Qidirishni boshlash uchun ` +
           `\n` +
           `<code>@xeonittebot &lt;paket nomi&gt;</code>` +
+          `\n` +
+          `yozasiz`,
+        parse_mode: "HTML",
+      },
+    }]);
+  }
+});
+
+composer.inlineQuery(/^\/tldr (.*)/ig, async (ctx: Context) => {
+  const query = ctx.inlineQuery?.query.slice(6);
+
+  if (query) {
+    const pages = await tldr(query.toLowerCase());
+
+    if (pages.length === 0) {
+      return await ctx.answerInlineQuery([{
+        type: "article",
+        id: "404tldr",
+        title: "Xatolik yuz berdi!",
+        description: `Ushbu ${ctx.inlineQuery?.query} ga oid sahifa topilmadi!`,
+        reply_markup: new InlineKeyboard().switchInlineCurrent(
+          "Qayta urinib ko'ramizmi?",
+          "foobar",
+        ),
+        input_message_content: {
+          message_text:
+            `<b>"${ctx.inlineQuery?.query}" ga oid natija mavjud emas!</b>` +
+            `\n` +
+            `Iltimos, boshqattan ushbu qidirmoqchi bo'lgan tldr sahifa` +
+            `nomini yozib qidirib ko'ring.`,
+          parse_mode: "HTML",
+        },
+      }]);
+    }
+
+    return await ctx.answerInlineQuery(
+      pages.map((page) => ({
+        type: "article",
+        id: crypto.randomUUID(),
+        title: page.title,
+        description: page.description,
+        url: page.link,
+        reply_markup: new InlineKeyboard().url(`Brauzerda ko\'rish`, page.link),
+        input_message_content: {
+          message_text: page.content,
+          parse_mode: "Markdown",
+        },
+      })),
+    );
+  }
+
+  if (!query) {
+    return await ctx.answerInlineQuery([{
+      type: "article",
+      id: "102",
+      title: "Qidirishni boshlang!",
+      description: "Qidirmoqchi bo'lgan tldr sahifa nomini yozing!",
+      reply_markup: new InlineKeyboard().switchInlineCurrent(
+        "Qayta urinib ko'ramizmi?",
+        "foobar",
+      ),
+      input_message_content: {
+        message_text: `<b>Salom foydalanuvchi!</b>` +
+          `\n` +
+          `Siz inline rejim ishga tushurdingiz. Ushbu qulaylik yordamida siz ` +
+          `tldr sahifasiga kirmasdan turib telegramdan tldr sahifalarini ` +
+          `qidirish imkoniga ega bo'lasiz! Qidirishni boshlash uchun ` +
+          `\n` +
+          `<code>@xeonittebot \/tldr &lt;sahifa nomi&gt;</code>` +
           `\n` +
           `yozasiz`,
         parse_mode: "HTML",
