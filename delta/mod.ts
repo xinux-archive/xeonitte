@@ -11,6 +11,7 @@ import honor from "./honor.ts";
 import warrior from "./warrior.ts";
 import trigger from "./trigger.ts";
 import feedback from "./feedback.ts";
+import code from "./code.ts";
 
 export default async (bot: Bot) => {
   await bot
@@ -25,5 +26,6 @@ export default async (bot: Bot) => {
     .use(feedback)
     .use(warrior)
     .use(trigger)
+    .use(code)
     .use(text);
 };
