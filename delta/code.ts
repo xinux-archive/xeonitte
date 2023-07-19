@@ -28,12 +28,16 @@ composer.command("code", async (ctx: Context) => {
 
     const msg = _msg.replace(/\n/gi, " ");
     const splitted = msg?.split(" ");
+
+    if (typeof splitted[1] === "undefined")
+      return ctx.reply("Dasturlash tili ko'rsatilmadi");
     const lang = splitted[1].toLowerCase();
 
     splitted[0] = "";
     splitted[1] = "";
 
-    const code = splitted.join(" ");
+    const code =  splitted.join(" ");
+    console.log(code);
     const available_langs = await fetch(
       "https://emkc.org/api/v2/piston/runtimes"
     );
