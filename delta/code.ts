@@ -43,7 +43,7 @@ composer.command("code", async (ctx: Context) => {
     // parsing python code from tg message is hard -_-
     if (lang === "python" || lang === "py")
       return ctx.reply(
-        "Uzr, python tili sintaksisda \"space\"'ga ishongani uchun, menga to'g'ri kelmaydi",
+        "Uzr, python tili sintaksisda \"space\"ga ishongani uchun, menga to'g'ri kelmaydi",
         {
           reply_to_message_id: msg_id,
         }
