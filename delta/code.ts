@@ -23,21 +23,36 @@ interface Response {
 
 composer.command("code", async (ctx: Context) => {
   try {
-    const _msg = ctx.message?.text;
+    const _msg = ctx.message!.text;
     if (typeof _msg === "undefined") return;
-
+    const msg_id = ctx.message!.message_id;
     const msg = _msg.replace(/\n/gi, " ");
     const splitted = msg?.split(" ");
 
     if (typeof splitted[1] === "undefined")
-      return ctx.reply("Dasturlash tili ko'rsatilmadi");
+      return ctx.reply("Dasturlash tili ko'rsatilmadi", {
+        reply_to_message_id: msg_id,
+      });
+    if (typeof splitted[2] === "undefined")
+      return ctx.reply("Kod ko'rsatilmadi", {
+        reply_to_message_id: msg_id,
+      });
+
     const lang = splitted[1].toLowerCase();
+
+    // parsing python code from tg message is hard -_-
+    if (lang === "python" || lang === "py")
+      return ctx.reply(
+        "Uzr, python tili sintaksisda \"space\"'ga ishongani uchun, menga to'g'ri kelmaydi",
+        {
+          reply_to_message_id: msg_id,
+        }
+      );
 
     splitted[0] = "";
     splitted[1] = "";
 
-    const code =  splitted.join(" ");
-    console.log(code);
+    const code = splitted.join(" ");
     const available_langs = await fetch(
       "https://emkc.org/api/v2/piston/runtimes"
     );
@@ -54,7 +69,10 @@ composer.command("code", async (ctx: Context) => {
     )
       return ctx.reply(
         `${lang} tili bizning ro'yxatimizda yo'q :(\n` +
-          `To'liq ro'yxatni dm orqali shu xabarni yuborib bila olasiz`
+          `To'liq ro'yxatni dm orqali shu xabarni yuborib bila olasiz`,
+        {
+          reply_to_message_id: msg_id,
+        }
       );
 
     if (
@@ -65,7 +83,7 @@ composer.command("code", async (ctx: Context) => {
       available_langs_json.forEach((l: Language) => {
         msg += l.language + "\n";
       });
-      return await ctx.reply(msg);
+      return await ctx.reply(msg, { reply_to_message_id: msg_id });
     }
 
     //   execute the code
@@ -104,11 +122,14 @@ composer.command("code", async (ctx: Context) => {
       `   <strong>output:</strong> ${output}`;
 
     return await ctx.reply(message, {
+      reply_to_message_id: msg_id,
       parse_mode: "HTML",
     });
   } catch (err) {
     console.log(err);
-    return ctx.reply("500: bot xatoligi");
+    return ctx.reply("500: bot xatoligi", {
+      reply_to_message_id: ctx.message?.message_id,
+    });
   }
 });
 
