@@ -93,4 +93,22 @@ composer.command("doc", isReply, async (ctx: Context): Promise<any> => {
   }
 });
 
+composer.command("grass", isReply, async (ctx: Context): Promise<any> => {
+  if (ctx?.message?.reply_to_message?.from?.id === ctx.me.id) {
+    return await reply(ctx, `Ha-ha... yaxshi urinish!`);
+  } else {
+    await ctx.api.deleteMessage(
+      ctx.message!.chat!.id,
+      ctx.message!.message_id,
+    ).catch(() => {
+      console.warn("Oh no... I couldn't delete the message!");
+    });
+
+    const text =
+      `<i>Xo'sh, ko'rinishidan internetda ko'p o'tirib yuboribsizlar, keling endi borib o't o'lanlarni ushlab kelsak-a?</i>`;
+
+    return await reply(ctx, text);
+  }
+});
+
 export default composer;
